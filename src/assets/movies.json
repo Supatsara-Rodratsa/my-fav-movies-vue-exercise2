@@ -1,0 +1,26 @@
+[
+  {
+    "id": "dune2021",
+    "title": "Dune",
+    "score": "85",
+    "picture": "https://en.wikipedia.org/wiki/File:Dune_(2021_film).jpg#/media/File:Dune_(2021_film).jpg"
+  },
+  {
+    "id": "eeaao2022",
+    "title": "Everything Everywhere All at Once",
+    "score": "99",
+    "picture": "https://en.wikipedia.org/wiki/File:Everything_Everywhere_All_at_Once.jpg#/media/File:Everything_Everywhere_All_at_Once.jpg"
+  },
+  {
+    "id": "topgun2022",
+    "title": "Top Gun: Maverick",
+    "score": "75",
+    "picture": "https://en.wikipedia.org/wiki/File:Top_Gun_Maverick_Poster.jpg#/media/File:Top_Gun_Maverick_Poster.jpg"
+  },
+  {
+    "id": "nope2022",
+    "title": "Nope",
+    "score": "50",
+    "picture": "https://en.wikipedia.org/wiki/File:Nope_(film)_poster.jpg#/media/File:Nope_(film)_poster.jpg"
+  }
+]
