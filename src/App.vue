@@ -182,10 +182,6 @@ function renderRating(score) {
     align-items: end;
   }
 
-  .emoji {
-    font-size: 18px;
-  }
-
   .toggle {
     display: flex;
   }
