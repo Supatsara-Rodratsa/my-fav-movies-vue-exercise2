@@ -207,9 +207,10 @@ function renderRating(score) {
   }
   .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 50px;
-    margin: 40px;
+    grid-gap: 30px;
+    margin: 20px;
+    grid-template-columns: repeat(auto-fill, 300px);
+    justify-content: center;
   }
 
   .line {
@@ -375,6 +376,11 @@ function renderRating(score) {
     margin: 0;
     margin-right: 10px;
     margin-block: 5px;
+  }
+
+  .selection {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
 </style>
