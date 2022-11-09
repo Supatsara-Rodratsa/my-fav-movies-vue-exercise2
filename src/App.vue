@@ -56,7 +56,7 @@ function renderRating(score) {
       <div class="card flex-col space-between" :style="`background-image: url(${item.picture})`">
         <div class="toggle">
           <label class="switch">
-            <input type="checkbox" :id="`option${index}`" :value="item.title" v-model="watchedList">
+            <input type="checkbox" :id="item.id" :value="item.title" v-model="watchedList">
             <div class="slider round">
              <span class="watched">Watched</span>
              <span class="un-watched">Unwatched</span>
@@ -115,13 +115,13 @@ function renderRating(score) {
         <template v-for="item in movies" v-bind:key="item.id">
           <div class="flex-row center">
             <label class="switch">
-              <input type="checkbox" :id="`option${index}`" :value="item.title" v-model="watchedList">
+              <input type="checkbox" :id="item.id" :value="item.title" v-model="watchedList">
               <div class="slider round">
                <span class="watched">Watched</span>
                <span class="un-watched">Unwatched</span>
               </div>
             </label>
-            <label for="`option${index}`">{{item.title}}</label> 
+            <label>{{item.title}}</label> 
           </div>
         </template>
       </div>
