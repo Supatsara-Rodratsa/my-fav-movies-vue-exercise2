@@ -65,9 +65,9 @@ function updateFavoriteMovie(value) {
   <div class="flex-col center">
     <div class="text-header">
       My fav movie:
-      <span class="normal-text"
-        >&nbsp;{{ favoriteMovie || "none chosen yet :(" }}</span
-      >
+      <span class="normal-text">
+        &nbsp;{{ favoriteMovie || "none chosen yet :(" }}
+      </span>
     </div>
     <div class="mrg-20 fav-dropdown">
       <SingleSelection
