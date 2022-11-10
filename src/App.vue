@@ -25,12 +25,22 @@ import { ref } from "vue";
 import movies from "./assets/movies.json";
 import MovieCard from "./components/MovieCard.vue";
 import Toggle from "./components/Toggle.vue";
+import SingleSelection from "./components/SingleSelection.vue";
+import MultipleSelection from "./components/MultipleSelection.vue";
 
 const favoriteMovie = ref("");
 const watchedList = ref([]);
 
-function getToggleUpdateValue(value) {
+function getUpdatedWatchedList(value) {
   watchedList.value = value;
+}
+
+function getAllTitles() {
+  return movies.map((movie) => movie.title);
+}
+
+function updateFavoriteMovie(value) {
+  favoriteMovie.value = value;
 }
 </script>
 
@@ -46,7 +56,7 @@ function getToggleUpdateValue(value) {
         :movie="item"
         :favoriteMovie="favoriteMovie"
         :watchedList="watchedList"
-        @updatedWatchedList="getToggleUpdateValue($event)"
+        @updatedWatchedList="getUpdatedWatchedList($event)"
       ></MovieCard>
     </div>
   </div>
@@ -60,12 +70,11 @@ function getToggleUpdateValue(value) {
       >
     </div>
     <div class="mrg-20 fav-dropdown">
-      <select v-model="favoriteMovie">
-        <option disabled value="">Please select a favorite!</option>
-        <template v-for="item in movies" v-bind:key="item.id">
-          <option>{{ item.title }}</option>
-        </template>
-      </select>
+      <SingleSelection
+        :titles="getAllTitles()"
+        :currentSelectedItem="favoriteMovie"
+        @updateSelectedItem="updateFavoriteMovie($event)"
+      ></SingleSelection>
     </div>
   </div>
   <br /><br />
@@ -80,11 +89,11 @@ function getToggleUpdateValue(value) {
     <div class="flex-row gap selection">
       <div class="multiple-selection">
         <div class="text-header">Multiple Selection</div>
-        <select v-model="watchedList" multiple>
-          <template v-for="item in movies" v-bind:key="item.id">
-            <option>{{ item.title }}</option>
-          </template>
-        </select>
+        <MultipleSelection
+          :titles="getAllTitles()"
+          :currentSelectedItems="watchedList"
+          @updateSelectedItems="getUpdatedWatchedList($event)"
+        ></MultipleSelection>
       </div>
       <div>
         <div class="text-header">Toggle</div>
@@ -94,7 +103,7 @@ function getToggleUpdateValue(value) {
               :id="item.id"
               :title="item.title"
               :watchedList="watchedList"
-              @updateToggleValue="getToggleUpdateValue($event)"
+              @updateToggleValue="getUpdatedWatchedList($event)"
             ></Toggle>
             <label>{{ item.title }}</label>
           </div>
@@ -189,36 +198,6 @@ h3 {
 
 .mrg-20 {
   margin: 20px 0;
-}
-
-.fav-dropdown select {
-  height: 40px;
-  border-radius: 30px;
-  padding: 0 20px;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1em;
-}
-
-.multiple-selection select {
-  border-radius: 10px;
-}
-
-.multiple-selection select option {
-  height: 30px;
-  display: flex;
-  align-items: center;
-  padding: 5px 20px;
-}
-
-select[multiple]:focus option:checked {
-  background: lightgray linear-gradient(0deg, lightgray 0%, lightgray 100%) !important;
-}
-
-select:focus {
-  outline: none;
 }
 
 .gap {
